@@ -5,19 +5,27 @@
   "tagline": "My Swedish textbooks turned into a course I actually use: capture a word, let AI enrich it, practise the chapter, review it later.",
   "year": "2026",
   "role": "Solo — design and build",
-  "stack": ["Next.js 15", "React 19", "TypeScript", "Prisma", "Postgres", "Claude API"],
+  "stack": [
+    "Next.js 15",
+    "React 19",
+    "TypeScript",
+    "Prisma",
+    "Postgres",
+    "Claude API"
+  ],
   "links": {
     "demo": "TODO_LIVE_URL",
     "code": "https://github.com/marcuccinicolo/SVENSKA"
   },
   "card": {
-    "image": "TODO_SCREENSHOT"
+    "image": "img/svenska-dashboard.jpg",
+    "focus": "top"
   },
   "caseStudy": {
     "hero": {
-      "src": "TODO_SCREENSHOT",
-      "alt": "TODO_DESCRIPTION",
-      "caption": "TODO_SCREENSHOT — the daily mission dashboard would work well here. The app is deployed, so this is a screenshot away."
+      "src": "img/svenska-dashboard.jpg",
+      "alt": "The Svenska OS dashboard: a Swedish greeting, an A1 to A2 progress bar at 50 percent, and four ranked tasks for the day",
+      "caption": "The daily dashboard answers one question — what should I study today — and is a live projection over the data rather than a streak counter."
     },
     "problem": [
       "I am learning Swedish from A1 towards B2 and I already had the curriculum: the Rivstart books and a Swedish–English dictionary. What I did not have was a way to work through them daily. Language apps do not follow my books, and a chatbot will happily talk to me in Swedish without ever telling me which chapter I am behind on.",
@@ -40,6 +48,18 @@
       "The AI lives behind a service layer. Feature code never imports the Anthropic SDK — it calls `enrichWord()`. Output comes back through tool-use and is validated with Zod at the boundary, so there is no prose parsing to go wrong.",
       "Two decisions were made to be reversed later. The scheduler sits behind a swappable interface — a transparent interval ladder today, FSRS when I want it — and a `User` row exists from day one even though the app is single-user, so adding authentication is a `where userId` change rather than a redesign.",
       "SQLite locally, Postgres in production: enum-like fields are stored as strings and validated in the application layer, which makes the provider swap a config change."
+    ],
+    "images": [
+      {
+        "src": "img/svenska-path.jpg",
+        "alt": "The Swedish Journey screen: cards for CEFR levels A1 to C1 above the chapter list of the Rivstart A1 + A2 textbook, with completed chapters ticked",
+        "caption": "The learning path is the real course — five CEFR levels, the actual Rivstart chapters, each with its grammar topics and word count."
+      },
+      {
+        "src": "img/svenska-dictionary.jpg",
+        "alt": "The dictionary screen listing Swedish words with their English translations, CEFR level, word class, and a saved marker on words already in the vocabulary",
+        "caption": "Every entry carries its gender, level and word class, and shows whether it is already in my vocabulary — unknown words save into review in one click."
+      }
     ]
   }
 }

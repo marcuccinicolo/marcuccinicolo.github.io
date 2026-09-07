@@ -5,9 +5,15 @@
   "tagline": "Three interface primitives — a command palette, a spatial canvas, explorable charts — built to be imported by a stranger, not demoed.",
   "year": "2026",
   "role": "Solo — library design, build pipeline, showcase",
-  "stack": ["TypeScript", "React", "pnpm + Turborepo", "Storybook", "tsup"],
+  "stack": [
+    "TypeScript",
+    "React",
+    "pnpm + Turborepo",
+    "Storybook",
+    "tsup"
+  ],
   "links": {
-    "demo": "TODO_LIVE_URL",
+    "demo": "https://marcuccinicolo.github.io/product-engineering-lab/",
     "code": "https://github.com/marcuccinicolo/product-engineering-lab"
   },
   "card": {

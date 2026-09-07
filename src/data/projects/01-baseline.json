@@ -5,9 +5,15 @@
   "tagline": "Tennis ratings that publish a prediction **before** each match, then show you whether it was right.",
   "year": "2026",
   "role": "Solo — data pipeline, API, and web app",
-  "stack": ["Python", "DuckDB", "FastAPI", "Next.js", "TypeScript"],
+  "stack": [
+    "Python",
+    "DuckDB",
+    "FastAPI",
+    "Next.js",
+    "TypeScript"
+  ],
   "links": {
-    "demo": "TODO_LIVE_URL",
+    "demo": null,
     "code": "https://github.com/marcuccinicolo/baseline"
   },
   "card": {
