@@ -14,7 +14,7 @@
     "Claude API"
   ],
   "links": {
-    "demo": "TODO_LIVE_URL",
+    "demo": null,
     "code": "https://github.com/marcuccinicolo/SVENSKA"
   },
   "card": {
@@ -41,8 +41,8 @@
       "The loop is deliberately short. Find a Swedish word, save it tagged with the chapter it came from, and the AI fills in the translation, whether it takes *en* or *ett*, its forms, examples and a usage note. Practise the chapter against exercises generated from its grammar and your own vocabulary. Review with flashcards. A daily dashboard answers one question — what should I study today — as a live projection over the data rather than a streak counter."
     ],
     "result": [
-      "TODO_RESULT — how long have you been using it, and has it actually moved you along the A2→B2 path? That is the outcome a reader will want, and it is the one thing here I cannot check for you.",
-      "On the engineering side it is deployed on Vercel against a hosted Postgres database, and it runs without an API key at all: enrichment falls back to a manual stub, so the app is never blocked on configuration."
+      "It is deployed on Vercel against a hosted Postgres database, and it runs without an API key at all: enrichment falls back to a manual stub, so the app is never blocked on configuration.",
+      "It is the tool I use for my own Swedish, which is the only test it was built to pass."
     ],
     "technical": [
       "The AI lives behind a service layer. Feature code never imports the Anthropic SDK — it calls `enrichWord()`. Output comes back through tool-use and is validated with Zod at the boundary, so there is no prose parsing to go wrong.",

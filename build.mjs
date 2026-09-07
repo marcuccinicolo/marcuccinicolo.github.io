@@ -266,11 +266,13 @@ async function renderProject(profile, p, projects) {
     <header class="case__head">
       <h1>${esc(p.title)}</h1>
       <p class="case__tagline">${inline(p.tagline)}</p>
-      <dl class="case__meta">
-        <div><dt>Year</dt><dd>${esc(p.year)}</dd></div>
-        <div><dt>Role</dt><dd>${esc(p.role)}</dd></div>
-        <div><dt>Stack</dt><dd>${esc(p.stack.join(' · '))}</dd></div>
-      </dl>
+      <dl class="case__meta">${
+        // A row whose value is unknown is left out rather than filled with a guess.
+        [['Year', p.year], ['Role', p.role], ['Stack', p.stack.join(' · ')]]
+          .filter(([, v]) => v)
+          .map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`)
+          .join('')
+      }</dl>
       ${actions(p.links, { size: 'actions--lg' })}
     </header>
 
