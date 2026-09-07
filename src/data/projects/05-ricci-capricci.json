@@ -1,0 +1,50 @@
+{
+  "order": 5,
+  "slug": "ricci-capricci",
+  "title": "Ricci & Capricci",
+  "tagline": "A landing page for a hairdresser in Pietrasanta, built to do one job: get people to pick up the phone.",
+  "year": "2026",
+  "role": "Client work — design and build",
+  "stack": ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion"],
+  "links": {
+    "demo": "https://ricci-e-capricci.vercel.app",
+    "code": "https://github.com/marcuccinicolo/ricci-e-capricci"
+  },
+  "card": {
+    "image": "img/ricci-desktop.jpg",
+    "focus": "top"
+  },
+  "caseStudy": {
+    "hero": {
+      "src": "img/ricci-desktop.jpg",
+      "alt": "The Ricci & Capricci landing page, with a photograph of the salon behind a serif headline and a call button",
+      "caption": "Real photographs of the salon, one gold accent, and a call button that is never more than a thumb away."
+    },
+    "problem": [
+      "Ricci & Capricci is a neighbourhood salon in Pietrasanta, on the Tuscan coast, open since 1998 and with a loyal clientele of every age. The client did not want a technological site. They wanted a credible one — something that carried twenty-five years of standing in a town where how a place looks genuinely matters, and that made the next step obvious.",
+      "The next step is not a form. For a salon it is a phone call or a walk through the door."
+    ],
+    "dataHeading": "The brief",
+    "data": [
+      "Convey heritage without nostalgia. Work mobile-first, because a local salon's traffic arrives from phones — searches for a hairdresser nearby, and Instagram. Stay readable for clients of every age, which sets a floor under body text and contrast. And use only real photographs of the salon and its work: no stock imagery, which in this trade reads as a business with nothing of its own to show."
+    ],
+    "images": [
+      {
+        "src": "img/ricci-mobile.jpg",
+        "alt": "The same landing page on a phone, with the call-now button fixed in the navigation bar",
+        "caption": "Mobile is the primary design, not the fallback — the call action stays reachable at every scroll position."
+      }
+    ],
+    "built": [
+      "A single-page site with the palette locked into design tokens rather than left to improvisation: warm whites, sand and soft blacks, with a light gold as the only accent, used sparingly. An elegant serif carries the headings against a plain sans for reading, both self-hosted so nothing is fetched from a third party at load.",
+      "Motion is limited to entrance transitions and small interactions. The call-to-action appears in the navigation, in the hero and in the contact section, and the map is embedded so the address is one tap from directions."
+    ],
+    "result": [
+      "The site is live and is the salon's public front. TODO_RESULT — if the client has said anything about calls or bookings since it launched, one honest sentence from them is worth more than any metric I could put here. If they have not, leave this as the description of what was delivered."
+    ],
+    "technical": [
+      "Next.js 14 with the App Router and React Server Components, TypeScript end to end, and Tailwind with the palette and spacing scale fixed in the config so the design system cannot drift mid-build.",
+      "Fonts are self-hosted through `next/font`, images go through the framework's optimiser, and Framer Motion handles entrance animation only. Icons come from a single consistent set rather than three."
+    ]
+  }
+}

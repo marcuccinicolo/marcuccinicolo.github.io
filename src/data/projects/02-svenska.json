@@ -1,0 +1,45 @@
+{
+  "order": 2,
+  "slug": "svenska",
+  "title": "Svenska OS",
+  "tagline": "My Swedish textbooks turned into a course I actually use: capture a word, let AI enrich it, practise the chapter, review it later.",
+  "year": "2026",
+  "role": "Solo — design and build",
+  "stack": ["Next.js 15", "React 19", "TypeScript", "Prisma", "Postgres", "Claude API"],
+  "links": {
+    "demo": "TODO_LIVE_URL",
+    "code": "https://github.com/marcuccinicolo/SVENSKA"
+  },
+  "card": {
+    "image": "TODO_SCREENSHOT"
+  },
+  "caseStudy": {
+    "hero": {
+      "src": "TODO_SCREENSHOT",
+      "alt": "TODO_DESCRIPTION",
+      "caption": "TODO_SCREENSHOT — the daily mission dashboard would work well here. The app is deployed, so this is a screenshot away."
+    },
+    "problem": [
+      "I am learning Swedish from A1 towards B2 and I already had the curriculum: the Rivstart books and a Swedish–English dictionary. What I did not have was a way to work through them daily. Language apps do not follow my books, and a chatbot will happily talk to me in Swedish without ever telling me which chapter I am behind on.",
+      "So the books stay the source of truth. The app is the layer that turns them into something I open every morning."
+    ],
+    "dataHeading": "The material",
+    "data": [
+      "The three Rivstart course books and the Hippocrene dictionary, modelled as books → chapters → grammar topics, plus the vocabulary I capture myself as I read.",
+      "The book PDFs never leave my machine. They are excluded from the repository, and in production the buttons that would open a page in the textbook disable themselves rather than break."
+    ],
+    "built": [
+      "Three layers: the content layer that models the real course; a learning engine with vocabulary, generated exercises and spaced-repetition review; and an intelligence layer that enriches words and explains grammar.",
+      "The loop is deliberately short. Find a Swedish word, save it tagged with the chapter it came from, and the AI fills in the translation, whether it takes *en* or *ett*, its forms, examples and a usage note. Practise the chapter against exercises generated from its grammar and your own vocabulary. Review with flashcards. A daily dashboard answers one question — what should I study today — as a live projection over the data rather than a streak counter."
+    ],
+    "result": [
+      "TODO_RESULT — how long have you been using it, and has it actually moved you along the A2→B2 path? That is the outcome a reader will want, and it is the one thing here I cannot check for you.",
+      "On the engineering side it is deployed on Vercel against a hosted Postgres database, and it runs without an API key at all: enrichment falls back to a manual stub, so the app is never blocked on configuration."
+    ],
+    "technical": [
+      "The AI lives behind a service layer. Feature code never imports the Anthropic SDK — it calls `enrichWord()`. Output comes back through tool-use and is validated with Zod at the boundary, so there is no prose parsing to go wrong.",
+      "Two decisions were made to be reversed later. The scheduler sits behind a swappable interface — a transparent interval ladder today, FSRS when I want it — and a `User` row exists from day one even though the app is single-user, so adding authentication is a `where userId` change rather than a redesign.",
+      "SQLite locally, Postgres in production: enum-like fields are stored as strings and validated in the application layer, which makes the provider swap a config change."
+    ]
+  }
+}

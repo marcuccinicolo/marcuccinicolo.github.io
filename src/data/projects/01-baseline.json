@@ -1,0 +1,57 @@
+{
+  "order": 1,
+  "slug": "baseline",
+  "title": "Baseline",
+  "tagline": "Tennis ratings that publish a prediction **before** each match, then show you whether it was right.",
+  "year": "2026",
+  "role": "Solo — data pipeline, API, and web app",
+  "stack": ["Python", "DuckDB", "FastAPI", "Next.js", "TypeScript"],
+  "links": {
+    "demo": "TODO_LIVE_URL",
+    "code": "https://github.com/marcuccinicolo/baseline"
+  },
+  "card": {
+    "image": "img/baseline-form-board.jpg",
+    "focus": "top"
+  },
+  "caseStudy": {
+    "hero": {
+      "src": "img/baseline-form-board.jpg",
+      "alt": "The Baseline form board, listing players ranked by how far they are beating their own expected results",
+      "caption": "The form board ranks players by how far they are beating their own expected results — not by rating."
+    },
+    "problem": [
+      "Official tennis rankings measure points accumulated over a season. That is a fair way to seed a draw, but it answers the wrong question if you want to know who is playing well *now*: a player can hold a high ranking on results from eleven months ago, and a player beating people far above them climbs slowly.",
+      "I wanted to measure something rankings cannot express — form against expectation, adjusted for who a player actually faced — and to show the evidence behind every claim rather than asking anyone to trust a number."
+    ],
+    "data": [
+      "1.17 million ATP and WTA matches going back to 1968, plus rankings and, where they exist, serve and return statistics.",
+      "Two limits are properties of the data and appear in the interface rather than in a footnote: WTA results stop at 16 December 2024 while ATP runs to 28 April 2026, and serve/return statistics only start in 1991 for ATP and 2006 for WTA. The source repositories were deleted in mid-2026, so the pipeline now recovers them from the Software Heritage archive."
+    ],
+    "built": [
+      "A pipeline that downloads and ingests the raw sources into DuckDB, reshapes them into a typed schema, fits three rating models, and derives a momentum metric. It then writes five denormalised tables — one per screen — which a read-only FastAPI service serves to a Next.js front end.",
+      "Three pages: a form board, a player page that leads with a claim and backs it with every recent match beside the probability published before it, and a method page."
+    ],
+    "images": [
+      {
+        "src": "img/baseline-player-page.jpg",
+        "alt": "A Baseline player page showing a career rating timeline above a table of recent matches, each with the win probability published before the match",
+        "caption": "A player page: the claim first, then the career timeline, then the per-match evidence."
+      },
+      {
+        "src": "img/baseline-method-page.jpg",
+        "alt": "The Baseline method page showing accuracy against official rankings, a calibration curve, and a list of claims the project does not make",
+        "caption": "The method page publishes the out-of-sample record, the calibration curve, and the claims the project explicitly refuses to make."
+      }
+    ],
+    "result": [
+      "On main-draw matches Baseline is right 69.7% of the time against the official ranking's 67.3%, and is materially better calibrated — 1.5% average error against 5.0%. Both numbers are published on the site itself, next to a list of things the project does not claim: it has not been benchmarked against betting markets and expects to lose that comparison, ratings are not comparable across eras, and nothing it reports is a cause."
+    ],
+    "technical": [
+      "The API only ever reads the five product tables. Each one is shaped for exactly one view, so every endpoint is a single filtered read and no analysis runs inside an HTTP handler — which leaves the research schemas free to change without breaking the product.",
+      "Three rules hold the API contract together. Coverage travels with the data: every response carries `data_through` and `is_current`, so a page cannot render 19-month-old WTA numbers as if they were live. Momentum is never a bare number, because its population mean is +0.13 rather than 0 and a raw score reads as \"hot\" when it is average. And absence is typed — a player below the reliability threshold returns `null` with a reason, never a zero.",
+      "122 tests run against a small real slice of data checked into the repo, in about a second and with no network. Fifteen further tests assert real-world facts a one-season fixture cannot support; they are marked and reported as deselected rather than passing silently.",
+      "The deployable artefact is not the 1.3 GB research warehouse but a 39 MB product-only export, baked into the container image so a deploy is a single immutable thing and a running API can never be missing its data."
+    ]
+  }
+}

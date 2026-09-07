@@ -1,0 +1,535 @@
+/* Nicolò Marcucci — portfolio.
+   One stylesheet, no framework, no webfonts. Light and dark are both first-class. */
+
+:root {
+  --paper:      #fbfaf7;
+  --surface:    #ffffff;
+  --ink:        #1a1917;
+  --ink-soft:   #57524a;
+  --rule:       #e4dfd5;
+  --accent:     #97432b;
+  --accent-ink: #ffffff;
+  --accent-bg:  #f5e9e3;
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --wrap: 64rem;
+  --prose: 36rem;
+  --step: clamp(1rem, 0.95rem + 0.25vw, 1.0625rem);
+
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:      #131211;
+    --surface:    #1b1a18;
+    --ink:        #ece8e1;
+    --ink-soft:   #a29b8f;
+    --rule:       #2f2c28;
+    --accent:     #e08a66;
+    --accent-ink: #1a1108;
+    --accent-bg:  #2a211c;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: var(--step)/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+a { color: inherit; }
+
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+code {
+  font: 0.875em/1.4 var(--mono);
+  background: var(--accent-bg);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.75rem 1rem;
+  z-index: 10;
+}
+.skip:focus { left: 0; }
+
+/* ---------------------------------------------------------------- header -- */
+
+.site-header {
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.site-header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-block: 1.125rem;
+}
+
+.site-header__name {
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 1.375rem;
+  font-size: 0.9375rem;
+}
+
+.site-header nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding-block: 0.125rem;
+  border-bottom: 1px solid transparent;
+}
+
+.site-header nav a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
+/* ----------------------------------------------------------------- intro -- */
+
+.intro {
+  padding-block: clamp(3.5rem, 9vw, 6rem) clamp(2.5rem, 6vw, 4rem);
+  max-width: calc(var(--prose) + 12rem);
+}
+
+.intro h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.25rem, 1.6rem + 3.2vw, 3.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
+}
+
+.intro__role {
+  font-size: 1.0625rem;
+  color: var(--ink-soft);
+  margin: 0 0 2rem;
+}
+
+.intro p:not(.intro__role):not(.intro__links) {
+  font-family: var(--serif);
+  font-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.25rem);
+  line-height: 1.62;
+  max-width: var(--prose);
+  margin: 0 0 1.125rem;
+}
+
+.intro__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-top: 2rem;
+}
+
+/* -------------------------------------------------------------- sections -- */
+
+.section { padding-block: clamp(2.5rem, 6vw, 4rem); border-top: 1px solid var(--rule); }
+
+.section__title {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 0.75rem;
+}
+
+.section__title--sub { margin-top: 3.5rem; }
+
+.section__lead {
+  font-family: var(--serif);
+  font-size: 1.125rem;
+  color: var(--ink-soft);
+  max-width: var(--prose);
+  margin: 0 0 2.25rem;
+}
+
+/* ----------------------------------------------------------------- cards -- */
+
+.grid {
+  display: grid;
+  gap: clamp(1.75rem, 4vw, 2.75rem);
+  grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+}
+
+.card { display: flex; flex-direction: column; }
+
+.card__media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  margin-bottom: 1.125rem;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card__title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.375rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.375rem;
+}
+
+.card__title a {
+  text-decoration: none;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 0% 1px;
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  transition: background-size 0.2s ease;
+}
+
+.card__title a:hover { background-size: 100% 1px; }
+
+.card__line {
+  color: var(--ink-soft);
+  margin: 0 0 0.875rem;
+  max-width: 34ch;
+}
+
+.card .actions { margin-top: auto; padding-top: 1rem; }
+
+/* ------------------------------------------------------------------ tags -- */
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tags li {
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 0.1875rem 0.5rem;
+}
+
+/* --------------------------------------------------------------- buttons -- */
+
+.actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+.btn {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0.6875rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  text-decoration: none;
+  color: var(--ink);
+  background: var(--surface);
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover { border-color: var(--ink-soft); }
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn--primary:hover { border-color: var(--accent); opacity: 0.9; }
+
+.btn--todo {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border-style: dashed;
+  border-color: var(--accent);
+  cursor: default;
+}
+
+.actions--lg .btn { padding: 0.8125rem 1.25rem; font-size: 0.9375rem; }
+
+/* ------------------------------------------------------------ how i work -- */
+
+.principles {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  margin-bottom: 1rem;
+}
+
+.principle h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.1875rem;
+  margin: 0 0 0.5rem;
+}
+
+.principle p { margin: 0; color: var(--ink-soft); }
+
+.skills { margin: 0; }
+
+.skills__row {
+  display: grid;
+  grid-template-columns: 12rem 1fr;
+  gap: 0.5rem 1.5rem;
+  padding-block: 0.875rem;
+  border-top: 1px solid var(--rule);
+}
+
+.skills__row:last-child { border-bottom: 1px solid var(--rule); }
+
+.skills dt {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.skills dd { margin: 0; }
+
+@media (max-width: 34rem) {
+  .skills__row { grid-template-columns: 1fr; }
+}
+
+/* ------------------------------------------------------------ case study -- */
+
+.case { padding-block: 2rem clamp(3rem, 7vw, 5rem); }
+
+.case__back { font-size: 0.9375rem; margin: 0 0 2.5rem; }
+.case__back a { color: var(--ink-soft); text-decoration: none; }
+.case__back a:hover { color: var(--accent); }
+
+.case__head { max-width: var(--prose); }
+
+.case__head h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2rem, 1.5rem + 2.4vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.625rem;
+}
+
+.case__tagline {
+  font-family: var(--serif);
+  font-size: 1.1875rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0 0 2rem;
+}
+
+.case__meta {
+  display: grid;
+  gap: 0.875rem 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  margin: 0 0 2rem;
+  padding-block: 1.25rem;
+  border-block: 1px solid var(--rule);
+}
+
+.case__meta dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 0.25rem;
+}
+
+.case__meta dd { margin: 0; font-size: 0.9375rem; }
+
+.case__section { margin-block: 3rem; }
+
+/* Prose stays narrow; figures are allowed to breathe past it. */
+.case__section > h2,
+.case__section > p { max-width: var(--prose); }
+.case__section > .figure { max-width: 46rem; }
+
+.case__section h2 {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 0.875rem;
+}
+
+.case__section p {
+  font-family: var(--serif);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.1875rem);
+  line-height: 1.68;
+  margin: 0 0 1.125rem;
+}
+
+.case__section em { font-style: italic; }
+
+.case__tech { border-top: 1px solid var(--rule); padding-top: 2.5rem; }
+
+.case__tech p { font-size: 1rem; line-height: 1.62; color: var(--ink-soft); }
+
+.case__tech-hint {
+  font-family: var(--sans) !important;
+  font-size: 0.875rem !important;
+  color: var(--ink-soft);
+  margin-top: -0.375rem !important;
+}
+
+/* --------------------------------------------------------------- figures -- */
+
+.figure {
+  margin: 2.5rem 0;
+  max-width: none;
+}
+
+.case__section .figure { margin-inline: 0; }
+.case > .wrap > .figure { margin-block: 2.5rem 3.5rem; }
+
+.figure img { border: 1px solid var(--rule); }
+
+.figure figcaption {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin-top: 0.75rem;
+  max-width: 42ch;
+}
+
+.figure__placeholder {
+  display: grid;
+  place-items: center;
+  min-height: 12rem;
+  aspect-ratio: 16 / 10;
+  border: 1px dashed var(--accent);
+  background: var(--accent-bg);
+  color: var(--accent);
+  font: 0.8125rem var(--mono);
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 1rem;
+}
+
+.card__media .figure__placeholder { border-style: dashed; height: 100%; }
+
+/* ----------------------------------------------------------- next / feet -- */
+
+.case__next { border-top: 1px solid var(--rule); margin-top: 4rem; padding-top: 2rem; }
+
+.case__next h2 {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 1.25rem;
+}
+
+.case__next ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+}
+
+.case__next a {
+  display: block;
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  padding: 1rem 1.125rem;
+  transition: border-color 0.15s ease;
+}
+
+.case__next a:hover { border-color: var(--accent); }
+
+.case__next strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.125rem;
+  margin-bottom: 0.25rem;
+}
+
+.case__next span { font-size: 0.9375rem; color: var(--ink-soft); }
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding-block: 2.5rem 3.5rem;
+  font-size: 0.9375rem;
+}
+
+.site-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0 0 0.75rem;
+}
+
+.site-footer__links a { color: var(--ink); text-decoration-color: var(--rule); }
+.site-footer__links a:hover { text-decoration-color: var(--accent); }
+
+.site-footer__note { color: var(--ink-soft); margin: 0; font-size: 0.875rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* A case study is one column of reading, so it sits in a narrower measure than
+   the project grid on the home page. */
+.case .wrap { max-width: 52rem; }
