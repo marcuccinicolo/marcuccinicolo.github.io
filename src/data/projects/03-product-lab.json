@@ -1,0 +1,59 @@
+{
+  "order": 3,
+  "slug": "product-lab",
+  "title": "Product Engineering Lab",
+  "tagline": "Three interface primitives — a command palette, a spatial canvas, explorable charts — built to be imported by a stranger, not demoed.",
+  "year": "2026",
+  "role": "Solo — library design, build pipeline, showcase",
+  "stack": ["TypeScript", "React", "pnpm + Turborepo", "Storybook", "tsup"],
+  "links": {
+    "demo": "TODO_LIVE_URL",
+    "code": "https://github.com/marcuccinicolo/product-engineering-lab"
+  },
+  "card": {
+    "image": "img/lab-hero.jpg"
+  },
+  "caseStudy": {
+    "hero": {
+      "src": "img/lab-hero.jpg",
+      "alt": "The Product Engineering Lab landing page, introducing the library of primitives",
+      "caption": "The showcase is a demo site, not a component dump."
+    },
+    "problem": [
+      "Most component playgrounds are a drawer of unrelated widgets: each one demonstrates that something can be rendered, none of them is something you would actually install. I wanted the opposite — a small set of primitives that share a design system, a build pipeline and a standard, where the package is the deliverable and the showcase is just how you look at it."
+    ],
+    "dataHeading": "The constraints",
+    "data": [
+      "Four rules, set before any code and applied to every package. Headless first, so the logic lives in pure functions and hooks and the presentation is swappable. A stated performance budget, proved rather than asserted. Accessibility as a requirement, not a later pass. And a written case study for each primitive explaining the one interesting trade-off it makes."
+    ],
+    "built": [
+      "Three primitives and the design tokens that connect them. A command palette with typed async providers, shown driving a fake issue tracker so you can see a real product respond rather than a widget in isolation. A spatial canvas engine handling pan, zoom-toward-cursor, marquee selection and culling, with a live counter showing how many of a thousand nodes are genuinely mounted. And a set of explorable data-viz primitives — an activity heatmap, a zoomable timeline, and a brushable scatter of 290 Swedish municipalities.",
+      "Every package has the same three layers: a pure core with no React, hooks that own state and input, components that render."
+    ],
+    "images": [
+      {
+        "src": "img/lab-command.jpg",
+        "alt": "A command palette open over a mock issue tracker, showing ranked results grouped by pages, actions, issues and people",
+        "caption": "The palette searches pages, actions, issues and people in one ranked list — the headless hook is the product, the component is one way to dress it."
+      },
+      {
+        "src": "img/lab-canvas.jpg",
+        "alt": "A knowledge graph laid out in clustered space on the canvas engine, with a heads-up display reporting mounted versus culled nodes",
+        "caption": "A thousand nodes in clustered space. The HUD reports what is actually in the DOM, because only on-screen nodes exist."
+      },
+      {
+        "src": "img/lab-dataviz.jpg",
+        "alt": "A scrolling data story combining an activity heatmap, a milestone timeline and a brushable scatter plot",
+        "caption": "Three chart primitives over one pure data layer, each framed as a story rather than a demo."
+      }
+    ],
+    "result": [
+      "Three primitives finished and two more designed but not built — listed as planned rather than quietly implied. 211 tests across the workspace, none of them snapshots, and every component suite runs an accessibility check over its own rendered output."
+    ],
+    "technical": [
+      "The test suite has two layers. Pure cores — fuzzy ranking, zoom-to-cursor maths, scales, hit-test geometry — are tested as plain functions. Components are driven through real input, with assertions going through accessible roles and names, so a test fails when the user-visible contract breaks rather than when markup is refactored.",
+      "jsdom has no layout engine, no `ResizeObserver` and no `PointerEvent`, which normally means charts silently render at zero width and the tests pass anyway. A shared test package installs shims that report a real box and let a test change it, so responsive behaviour and culling are genuinely exercised.",
+      "Packages build through tsup to ESM plus type declarations, with a `\"use client\"` banner so they drop straight into a Next.js server tree. Storybook aliases the packages to their source rather than their build output — a choice I A/B tested rather than assumed, and documented in the README along with what it costs."
+    ]
+  }
+}
