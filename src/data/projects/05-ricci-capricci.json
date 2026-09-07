@@ -5,7 +5,12 @@
   "tagline": "A landing page for a hairdresser in Pietrasanta, built to do one job: get people to pick up the phone.",
   "year": "2026",
   "role": "Client work — design and build",
-  "stack": ["Next.js 14", "TypeScript", "Tailwind CSS", "Framer Motion"],
+  "stack": [
+    "Next.js 14",
+    "TypeScript",
+    "Tailwind CSS",
+    "Framer Motion"
+  ],
   "links": {
     "demo": "https://ricci-e-capricci.vercel.app",
     "code": "https://github.com/marcuccinicolo/ricci-e-capricci"
@@ -40,7 +45,7 @@
       "Motion is limited to entrance transitions and small interactions. The call-to-action appears in the navigation, in the hero and in the contact section, and the map is embedded so the address is one tap from directions."
     ],
     "result": [
-      "The site is live and is the salon's public front. TODO_RESULT — if the client has said anything about calls or bookings since it launched, one honest sentence from them is worth more than any metric I could put here. If they have not, leave this as the description of what was delivered."
+      "The site is live and is the salon's public front — the address it gives out and the number people call."
     ],
     "technical": [
       "Next.js 14 with the App Router and React Server Components, TypeScript end to end, and Tailwind with the palette and spacing scale fixed in the config so the design system cannot drift mid-build.",

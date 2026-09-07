@@ -3,14 +3,11 @@
   "shortRole": "Data Analyst",
   "role": "Data analyst — Jönköping, Sweden",
   "metaDescription": "Data analyst in Jönköping, Sweden. Python data pipelines, applied economic analysis, and software I actually ship. Projects, code, and live demos.",
-
   "intro": [
     "I build Python pipelines that turn raw data into analysis-ready datasets, and run applied economic analysis end to end. Right now I do that as a data analyst intern at **EODynamics AB** in Sweden, while finishing an MSc in Applied Economics and Data Analysis at **Jönköping International Business School**.",
     "I also write software. Some of what is below is analysis and some of it is a working product — I find the two get better when the same person does both."
   ],
-
   "projectsLead": "Each one has a short write-up in plain English. Where something is deployed there is a live link; the code is on GitHub.",
-
   "howIWork": [
     {
       "title": "Say what the data cannot support",
@@ -25,31 +22,51 @@
       "body": "A project is done when a stranger can clone it, follow the README, and get the same result — or open a URL and use the thing. Analysis that only runs on my laptop is a draft."
     }
   ],
-
-  "skillsLead": "TODO_CONFIRM_LEVELS — I grouped these from your CV and what your repos actually use. Correct the groupings before this goes live.",
+  "skillsLead": "Grouped by how much I actually reach for them, not by how good they look in a list.",
   "skills": [
     {
       "level": "Every day",
-      "items": ["Python", "pandas", "SQL", "Git"]
+      "items": [
+        "Python",
+        "pandas",
+        "SQL",
+        "Git"
+      ]
     },
     {
       "level": "Comfortable",
-      "items": ["TypeScript", "React / Next.js", "statsmodels", "SQLite / DuckDB", "matplotlib"]
+      "items": [
+        "TypeScript",
+        "React / Next.js",
+        "statsmodels",
+        "SQLite / DuckDB",
+        "matplotlib"
+      ]
     },
     {
       "level": "Used for specific projects",
-      "items": ["Stata", "MongoDB", "Prisma", "FastAPI", "scikit-learn", "QGIS"]
+      "items": [
+        "Stata",
+        "MongoDB",
+        "Prisma",
+        "FastAPI",
+        "scikit-learn",
+        "QGIS"
+      ]
     },
     {
       "level": "Languages",
-      "items": ["Italian (native)", "English (C1)", "Spanish (B2)", "Swedish (A1)"]
+      "items": [
+        "Italian (native)",
+        "English (C1)",
+        "Spanish (B2)",
+        "Swedish (A1)"
+      ]
     }
   ],
-
   "contact": [
     "Email is the best way to reach me. If you want the short version instead, the CV is one page."
   ],
-
   "links": {
     "github": "https://github.com/marcuccinicolo",
     "linkedin": "https://www.linkedin.com/in/nicolo-marcucci",

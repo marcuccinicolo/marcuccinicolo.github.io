@@ -4,8 +4,14 @@
   "title": "Together",
   "tagline": "A social events app for Jönköping University students — post what you are doing, see who is up for it.",
   "year": "2026",
-  "role": "TODO_DESCRIPTION — solo, or a team project?",
-  "stack": ["Next.js 14", "TypeScript", "FastAPI", "MySQL", "Leaflet"],
+  "role": null,
+  "stack": [
+    "Next.js 14",
+    "TypeScript",
+    "FastAPI",
+    "MySQL",
+    "Leaflet"
+  ],
   "links": {
     "demo": "https://together-six-virid.vercel.app/?demo=1",
     "code": null
@@ -21,8 +27,8 @@
       "caption": "The demo mode, seeded with sample events so the link works without signing up."
     },
     "problem": [
-      "TODO_DESCRIPTION — why you started this. The app itself explains what it does, but not what made it worth building: whether it came out of a course, whether it was a real problem you and other exchange students had in Jönköping, and what existed already that did not work. Two or three honest sentences here will do more than anything else on this page.",
-      "What the product answers is narrow and clear: someone is doing something tonight — a pre-game, a gym session, a study circle — and wants other students to come. Group chats bury that, and event platforms are too heavy for it."
+      "Someone is doing something tonight — a pre-game, a gym session, a study circle — and wants other students to come. Group chats bury it under everything else, and event platforms are far too heavy for a Tuesday evening at university.",
+      "Together is the narrow version of that: post what you are doing, see who is up for it."
     ],
     "dataHeading": "The inputs",
     "data": [
@@ -34,7 +40,7 @@
       "Authentication is JWT with seven-day tokens and bcrypt-hashed passwords; client state is kept in Zustand and persisted to local storage so a refresh does not log you out or lose your place."
     ],
     "result": [
-      "TODO_RESULT — did anyone besides you use it? Even \"about fifteen students at JU tried it over a few weeks\" is worth more than a feature list. If the honest answer is that it never went past the demo, say that instead; it is still a working full-stack app and a recruiter can click it right now."
+      "The app is deployed and open: the link above runs a demo mode seeded with sample events, so anyone can look around the feed, the map and an event page without creating an account."
     ],
     "technical": [
       "Next.js 14 with the App Router and Tailwind on the front, FastAPI with SQLAlchemy 2.0 on Python 3.11 behind it, MySQL 8 underneath. The map uses Leaflet with CARTO dark tiles to match the interface rather than fighting it.",
