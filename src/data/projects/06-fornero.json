@@ -1,0 +1,51 @@
+{
+  "order": 2,
+  "slug": "fornero",
+  "title": "Retirement and Financial Stress",
+  "tagline": "Does retiring leave people worse off? Italy's 2011 pension reform makes it possible to answer that causally rather than by correlation.",
+  "year": "2026",
+  "role": "Solo — econometric analysis",
+  "stack": ["Python", "pandas", "linearmodels", "IV-2SLS"],
+  "links": {
+    "demo": null,
+    "code": "https://github.com/marcuccinicolo/retirement-financial-stress"
+  },
+  "card": {
+    "image": "img/fornero-first-stage.jpg"
+  },
+  "caseStudy": {
+    "hero": {
+      "src": "img/fornero-first-stage.jpg",
+      "alt": "Scatter plot of the share of retired individuals by year of birth, with a steep pre-reform trend line up to the 1952 cohort and a visibly lower line after it",
+      "caption": "The reform in one picture: people born from 1952 onwards were pushed out of retirement eligibility, which is the variation the whole study rests on."
+    },
+    "problem": [
+      "Retired people report more financial stress than people still working. That comparison tells you almost nothing, because nobody retires at random: poor health, redundancy and a low income all push someone towards retirement *and* towards money worries at the same time. Compare the two groups directly and you measure the reasons people left work, not the effect of leaving.",
+      "To say anything causal you need people who retired later than they wanted to, for a reason that has nothing to do with their finances."
+    ],
+    "data": [
+      "SHARE — the Survey of Health, Ageing and Retirement in Europe — which follows older adults over time and asks, among much else, how easily they make ends meet on a four-point scale.",
+      "The microdata are licensed and cannot be redistributed, so the repository holds the code, the figures and the regression output, plus instructions for requesting the dataset directly from SHARE. Nobody has to take my word for the numbers; they have to apply for the data."
+    ],
+    "built": [
+      "Italy's 2011 Fornero reform raised the statutory retirement age sharply and immediately for cohorts born from 1952 onwards. Whether you were caught by it depended on your birth year and your gender — not on how your finances were going — which makes it a usable instrument.",
+      "So the estimate is two-stage least squares: predict retirement from exposure to the reform, then use only that predicted variation to explain financial stress, controlling for income, self-reported health and years of education."
+    ],
+    "images": [
+      {
+        "src": "img/fornero-iv-table.png",
+        "alt": "Regression table showing a coefficient of 0.5307 on the retired variable with standard error 0.2305 and p-value 0.0213, alongside controls for log income, self-perceived health and years of education",
+        "caption": "The second stage. The coefficient on retirement is the number the whole design exists to identify."
+      }
+    ],
+    "result": [
+      "Retiring raises financial stress by **0.53 points on a 1–4 scale** (standard error 0.23, p = 0.02) — a large move on a scale that narrow. The first stage is strong, with an F-statistic of 154.4, so this is not a weak-instrument result.",
+      "The reading I take from it is about the transition Italy made to a notional defined-contribution pension system: for these cohorts, leaving work meant a drop in income sharp enough to be felt as hardship, not merely as a lower balance."
+    ],
+    "technical": [
+      "The instrument is cohort-and-gender specific rather than a single post-1952 dummy, because the reform moved the statutory age differently for men and women. Identification therefore comes from the interaction, not from a raw cohort trend.",
+      "The first-stage F-statistic of 154.4 sits far above the conventional weak-instrument thresholds. That matters here: with a weak instrument, two-stage least squares is biased towards the ordinary least squares estimate it is supposed to correct, which would have quietly reproduced exactly the confounded comparison the design was built to avoid.",
+      "What this cannot tell you: whether the effect persists years after retirement, and whether it generalises beyond the cohorts the reform actually bound. The estimate is local to the people whose retirement date the reform moved."
+    ]
+  }
+}
