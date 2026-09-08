@@ -1,11 +1,16 @@
 {
-  "order": 4,
+  "order": 5,
   "slug": "ztl",
   "title": "Traffic Zones and Air Quality",
   "tagline": "Italian cities closed their centres to traffic in 2015. Did the air actually get cleaner, or was it going to anyway?",
   "year": "2026",
   "role": "Solo — econometric analysis",
-  "stack": ["Python", "pandas", "statsmodels", "Difference-in-differences"],
+  "stack": [
+    "Python",
+    "pandas",
+    "statsmodels",
+    "Difference-in-differences"
+  ],
   "links": {
     "demo": null,
     "code": "https://github.com/marcuccinicolo/ZTL-Impact-Analysis"

@@ -1,11 +1,16 @@
 {
-  "order": 2,
+  "order": 3,
   "slug": "fornero",
   "title": "Retirement and Financial Stress",
   "tagline": "Does retiring leave people worse off? Italy's 2011 pension reform makes it possible to answer that causally rather than by correlation.",
   "year": "2026",
   "role": "Solo — econometric analysis",
-  "stack": ["Python", "pandas", "linearmodels", "IV-2SLS"],
+  "stack": [
+    "Python",
+    "pandas",
+    "linearmodels",
+    "IV-2SLS"
+  ],
   "links": {
     "demo": null,
     "code": "https://github.com/marcuccinicolo/retirement-financial-stress"
