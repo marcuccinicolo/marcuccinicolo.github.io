@@ -1,0 +1,53 @@
+{
+  "order": 2,
+  "slug": "kickoff",
+  "title": "Team Hightower",
+  "tagline": "676 phone photographs of a student welcome week, cut down to 49 and told as a story rather than an album.",
+  "year": "2026",
+  "role": "Solo — curation, pipeline and build",
+  "stack": ["Python", "Pillow", "JavaScript", "Three.js", "ffmpeg"],
+  "links": {
+    "demo": "https://kickoff-gallery.vercel.app",
+    "code": null
+  },
+  "card": {
+    "image": "img/kickoff-hero.jpg"
+  },
+  "caseStudy": {
+    "hero": {
+      "src": "img/kickoff-hero.jpg",
+      "alt": "The opening of the page: a navy panel carrying the Team Hightower badge and the headline, beside a photograph of the seven leaders in patched overalls",
+      "caption": "The badge is rendered in three dimensions and turns; you can spin it with the cursor."
+    },
+    "problem": [
+      "A shared album of 676 photographs and 114 clips is an archive, and nobody scrolls an archive. The brief was not to publish the pictures — it was to make ten days of a university welcome week look like something you would want to be part of next year.",
+      "Which means the work is mostly refusal: choosing what not to show, and then giving what is left an order that reads."
+    ],
+    "dataHeading": "The material",
+    "data": [
+      "Everything came from the team: the shared album, the leaders' handbook with the week's real schedule, and a photograph of the embroidered patch.",
+      "The handbook turned out to be the most valuable of the three. It meant every day already had a name, a time and a place — Roll Call, Ovve Ceremony, Pub Crawl, Night Mission, City Quest, Jubel Fullmoon, Finsittning — so the page could be nine chapters in order instead of one long grid."
+    ],
+    "built": [
+      "A Python pipeline sorts the photographs; the page itself is HTML, CSS and JavaScript with no framework. Bursts are collapsed to one frame each, the sharpest is kept, and every scene is capped at a handful — 676 became 129 moments and then 49 photographs.",
+      "The colours are not a choice. Navy and gold are the two dominant colours of the patch, sampled from a photograph of it, which is why the page looks like it belongs to the team rather than to a template. The badge itself is rendered as a struck coin in WebGL — a rim with two faces, lit so the gold edge catches as it turns — and it is the only thing on the page that is not a rectangle."
+    ],
+    "images": [
+      {
+        "src": "img/kickoff-scene.jpg",
+        "alt": "A chapter of the page: a full-width photograph with the day's title over it, above two balanced columns of further photographs",
+        "caption": "Each day opens full width with its real name, then breaks into columns filled to equal height."
+      }
+    ],
+    "result": [
+      "Published and in use. Every published image is stripped of its metadata first — phone photographs carry GPS — and the page is `noindex`, so the link is something the team hands out rather than something a search engine finds.",
+      "The honest limit: one of the nine days has five photographs in total and none of them are good. No amount of selection fixes a day nobody shot, and the page does not pretend otherwise."
+    ],
+    "technical": [
+      "**Bursts, not frames.** Fifteen shots of one moment are one moment. Photographs within twenty-five seconds of each other are grouped, and the sharpest of each group survives — sharpness measured as the variance of the Laplacian, which collapses when an image is blurred.",
+      "**The day ends at five in the morning.** Grouping by calendar date invented a rest day out of the small hours of the festival and pushed the end of one evening onto the head of the next. Rolling the day over at 05:00 fixed nine chapters at once.",
+      "**A screenshot is perfectly sharp.** Ranking by focus put a saved meme at the top of a chapter, because it beat every real photograph. Anything below the camera roll's own resolution is now excluded — the measure was right and the population was wrong.",
+      "**Columns filled by arithmetic.** CSS `columns` gave up on frames of wildly different heights and left one column half empty. Every photograph carries its dimensions, so the layout tries each arrangement and keeps the most even one, laying the odd frame out across the full width. The worst mismatch on the page went from 940 pixels to 302."
+    ]
+  }
+}
