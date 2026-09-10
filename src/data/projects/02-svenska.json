@@ -14,7 +14,7 @@
     "Claude API"
   ],
   "links": {
-    "demo": null,
+    "demo": "https://svenska-tawny.vercel.app",
     "code": "https://github.com/marcuccinicolo/SVENSKA"
   },
   "card": {
@@ -41,8 +41,8 @@
       "The loop is deliberately short. Find a Swedish word, save it tagged with the chapter it came from, and the AI fills in the translation, whether it takes *en* or *ett*, its forms, examples and a usage note. Practise the chapter against exercises generated from its grammar and your own vocabulary. Review with flashcards. A daily dashboard answers one question — what should I study today — as a live projection over the data rather than a streak counter."
     ],
     "result": [
-      "It is deployed on Vercel against a hosted Postgres database, and it runs without an API key at all: enrichment falls back to a manual stub, so the app is never blocked on configuration.",
-      "It is the tool I use for my own Swedish, which is the only test it was built to pass."
+      "It is live, and it is the tool I actually use for my own Swedish — which is the only test it was built to pass.",
+      "The public demo is deliberately read-only. It had been running against a free hosted Postgres that was suspended after two months of inactivity, so the page answered 500 while the code was fine; it now reads a SQLite database shipped inside the build, which cannot expire. Browsing, the learning path and the dictionary all work; adding a word does not, because there is nowhere to write."
     ],
     "technical": [
       "The AI lives behind a service layer. Feature code never imports the Anthropic SDK — it calls `enrichWord()`. Output comes back through tool-use and is validated with Zod at the boundary, so there is no prose parsing to go wrong.",
