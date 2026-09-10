@@ -17,9 +17,7 @@
     "code": null
   },
   "card": {
-    "image": "img/together-feed.jpg",
-    "fit": "contain",
-    "background": "#15141c"
+    "image": "img/together-card.jpg"
   },
   "caseStudy": {
     "hero": {
