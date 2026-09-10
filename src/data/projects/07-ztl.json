@@ -16,7 +16,9 @@
     "code": "https://github.com/marcuccinicolo/ZTL-Impact-Analysis"
   },
   "card": {
-    "image": "img/ztl-event-study.jpg"
+    "image": "img/ztl-event-study.jpg",
+    "fit": "contain",
+    "background": "#ffffff"
   },
   "caseStudy": {
     "hero": {

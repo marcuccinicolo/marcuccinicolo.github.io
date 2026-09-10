@@ -211,6 +211,10 @@ code {
   object-fit: cover;
 }
 
+/* Shown whole rather than cropped. A little inset keeps the image off the
+   card's own border, so the letterboxing reads as framing, not as a gap. */
+.card__media--whole { padding: 0.625rem; }
+
 .card__title {
   font-family: var(--serif);
   font-weight: 500;

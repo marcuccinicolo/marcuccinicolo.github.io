@@ -5,13 +5,20 @@
   "tagline": "A live air traffic display that never lies about how old its data is.",
   "year": "2026",
   "role": "Solo — data pipeline, proxy, and display",
-  "stack": ["TypeScript", "Node", "Canvas", "OpenSky API"],
+  "stack": [
+    "TypeScript",
+    "Node",
+    "Canvas",
+    "OpenSky API"
+  ],
   "links": {
     "demo": "https://stockholm-tma.vercel.app",
     "code": "https://github.com/marcuccinicolo/stockholm-tma"
   },
   "card": {
-    "image": "img/tma-scope.jpg"
+    "image": "img/tma-scope.jpg",
+    "fit": "contain",
+    "background": "#0c0d0f"
   },
   "caseStudy": {
     "hero": {

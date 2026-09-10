@@ -170,13 +170,24 @@ function footer(profile) {
 }
 
 async function projectCard(p) {
+  // A photograph can be cropped to fit the card. A chart or an interface
+  // cannot: the crop takes an axis label or the edge of a panel, and the
+  // result reads as a broken image rather than a tight one. Those are shown
+  // whole against their own edge colour instead.
+  const contain = p.card.fit === 'contain';
+  const mediaStyle = contain && p.card.background
+    ? ` style="background:${esc(p.card.background)}"` : '';
+  const imgStyle = contain
+    ? 'object-fit:contain'
+    : `object-position:${esc(p.card.focus || 'center')}`;
+
   return `<article class="card">
-  <a class="card__media" href="/${esc(p.slug)}/" tabindex="-1" aria-hidden="true">
+  <a class="card__media${contain ? ' card__media--whole' : ''}" href="/${esc(p.slug)}/"
+     tabindex="-1" aria-hidden="true"${mediaStyle}>
     ${isTodo(p.card.image)
       ? `<span class="figure__placeholder">${esc(p.card.image)}</span>`
       : `<img src="${esc(asset(p.card.image))}" alt="" ${await figureAttrs(p.card.image)}
-             loading="lazy" decoding="async"
-             style="object-position:${esc(p.card.focus || 'center')}">`}
+             loading="lazy" decoding="async" style="${imgStyle}">`}
   </a>
   <div class="card__body">
     <h3 class="card__title"><a href="/${esc(p.slug)}/">${esc(p.title)}</a></h3>
