@@ -16,7 +16,9 @@
     "code": "https://github.com/marcuccinicolo/retirement-financial-stress"
   },
   "card": {
-    "image": "img/fornero-first-stage.jpg"
+    "image": "img/fornero-first-stage.jpg",
+    "fit": "contain",
+    "background": "#ffffff"
   },
   "caseStudy": {
     "hero": {

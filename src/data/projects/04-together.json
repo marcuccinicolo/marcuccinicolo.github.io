@@ -18,7 +18,8 @@
   },
   "card": {
     "image": "img/together-feed.jpg",
-    "focus": "top"
+    "fit": "contain",
+    "background": "#15141c"
   },
   "caseStudy": {
     "hero": {

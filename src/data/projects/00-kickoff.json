@@ -5,7 +5,13 @@
   "tagline": "676 phone photographs of a student welcome week, cut down to 49 and told as a story rather than an album.",
   "year": "2026",
   "role": "Solo — curation, pipeline and build",
-  "stack": ["Python", "Pillow", "JavaScript", "Three.js", "ffmpeg"],
+  "stack": [
+    "Python",
+    "Pillow",
+    "JavaScript",
+    "Three.js",
+    "ffmpeg"
+  ],
   "links": {
     "demo": "https://kickoff-gallery.vercel.app",
     "code": null

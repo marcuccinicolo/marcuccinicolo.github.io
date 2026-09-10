@@ -18,7 +18,8 @@
   },
   "card": {
     "image": "img/baseline-form-board.jpg",
-    "focus": "top"
+    "fit": "contain",
+    "background": "#08090b"
   },
   "caseStudy": {
     "hero": {
