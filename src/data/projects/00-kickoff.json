@@ -17,11 +17,11 @@
     "code": null
   },
   "card": {
-    "image": "img/kickoff-hero.jpg"
+    "image": "img/kickoff-cover.jpg"
   },
   "caseStudy": {
     "hero": {
-      "src": "img/kickoff-hero.jpg",
+      "src": "img/kickoff-cover.jpg",
       "alt": "The opening of the page: a navy panel carrying the Team Hightower badge and the headline, beside a photograph of the seven leaders in patched overalls",
       "caption": "The badge is rendered in three dimensions and turns; you can spin it with the cursor."
     },
@@ -40,7 +40,7 @@
     ],
     "images": [
       {
-        "src": "img/kickoff-scene.jpg",
+        "src": "img/kickoff-chapter.jpg",
         "alt": "A chapter of the page: a full-width photograph with the day's title over it, above two balanced columns of further photographs",
         "caption": "Each day opens full width with its real name, then breaks into columns filled to equal height."
       }
