@@ -14,7 +14,7 @@
     "pytest"
   ],
   "links": {
-    "demo": null,
+    "demo": "https://european-conflict-security-intelligence-qrkpqqct8esruqgjjjhcyr.streamlit.app",
     "code": "https://github.com/marcuccinicolo/european-conflict-security-intelligence"
   },
   "card": {
