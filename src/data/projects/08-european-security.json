@@ -2,16 +2,16 @@
   "order": 0.5,
   "slug": "european-security",
   "title": "European Conflict & Security Intelligence",
-  "tagline": "Conflict events and defence budgets in Europe, side by side — with every number traceable to a licensed source and a stated denominator.",
+  "tagline": "Conflict events and defence budgets in Europe, side by side — then a pre-specified event study of whether proximity to Russia predicts the rise in military burden.",
   "year": "2026",
-  "role": "Solo — data pipeline, geospatial analysis, dashboard and research brief",
+  "role": "Solo — data pipeline, geospatial and econometric analysis, dashboard",
   "stack": [
     "Python",
     "DuckDB",
     "GeoPandas",
+    "statsmodels",
     "Streamlit",
-    "Plotly",
-    "pytest"
+    "Plotly"
   ],
   "links": {
     "demo": "https://european-conflict-security-intelligence-qrkpqqct8esruqgjjjhcyr.streamlit.app",
@@ -28,19 +28,25 @@
       "caption": "Conflict patterns from UCDP GED. Every headline figure states its denominator, and counts are labelled as recorded events, not a census of what happened."
     },
     "problem": [
-      "Conflict and defence data are easy to chart and easy to misread. Event counts move when reporting changes, fatality figures are estimates with wide ranges, and expenditure series mix current and constant prices. Put conflict and spending on one chart and it invites a causal story the data cannot support."
+      "Conflict and defence data are easy to chart and easy to misread. Event counts move when reporting changes, fatality figures are wide estimates, and spending series mix price bases. Put conflict and spending on one chart and it invites a causal story the data cannot support."
     ],
     "data": [
-      "The **UCDP Georeferenced Event Dataset** (58,016 European events, 1989–2025, CC BY 4.0) and the **SIPRI Military Expenditure Database** (1949–2025). Each file is recorded with its URL, retrieval time and SHA-256. ACLED is supported through its API but never redistributed, as its licence requires."
+      "The **UCDP Georeferenced Event Dataset** (58,016 European events, 1989–2025) and the **SIPRI Military Expenditure Database**, each file recorded with URL, retrieval time and SHA-256. ACLED is supported but never redistributed, as its licence requires."
     ],
     "built": [
-      "A validated pipeline into DuckDB, with machine-readable quality reports. SIPRI's estimate flags are read from cell font colours, and a GeoPandas point-in-country check runs against national borders. The analysis refuses invalid operations in code: growth on current prices, summing ratios, mixing sources."
+      "A validated DuckDB pipeline with machine-readable quality reports and a GeoPandas point-in-country check; the code refuses invalid operations such as growth on current prices.",
+      "On top, an event study written down before any estimate: military burden in 37 countries, 2005–2025, against each capital's distance to Russia, with two-way fixed effects and a wild cluster bootstrap."
     ],
     "images": [
       {
         "src": "img/ecsi-fatalities.jpg",
         "alt": "Line chart of estimated fatalities per year in Europe from 1989 to 2025, with a shaded band between UCDP's low and high estimates that widens sharply after 2022",
         "caption": "UCDP's best estimate with its low–high range. For 2022 the high estimate is 2.4 times the low, so point figures for an active war are not quoted without the band."
+      },
+      {
+        "src": "img/ecsi-event-study.jpg",
+        "alt": "Event-study chart of the yearly gradient of military expenditure in percent of GDP per 1,000 km from Russia, near zero before 2014, drifting down after 2014 and falling sharply after 2022, with 95 percent confidence intervals",
+        "caption": "Year-by-year gradient relative to 2013. Near zero before 2014, drifting down after the annexation of Crimea, and breaking sharply after the full-scale invasion."
       },
       {
         "src": "img/ecsi-defence.jpg",
@@ -54,11 +60,12 @@
       }
     ],
     "result": [
-      "The checks found what a plain chart hides. The 2025 drop in recorded events (−32%) comes with flat fatality estimates and far fewer date-uncertain records, which points to a coding change rather than de-escalation. Real European military expenditure rose **113%** between 2014 and 2025, and 86% excluding Russia and Ukraine."
+      "After 2022, burden rose **0.44 pp of GDP more per 1,000 km closer to Russia** (bootstrap p < 0.001), robust to every pre-specified check. The post-2014 gradient is weaker and fails its pre-trend test, and the write-up says so. Separately, the 2025 drop in recorded events turned out to be a coding change, not de-escalation."
     ],
     "technical": [
       "The point-in-country test flagged 1,177 events outside their stated country's present-day border. Almost all turned out to be UCDP's historical state coding — 1990s events in Croatia, Bosnia and Kosovo recorded under \"Serbia (Yugoslavia)\". That is a property of the source, not an error, but it changes what a country filter means.",
-      "Totals across countries use a balanced panel, so a country's series starting part-way through cannot inflate growth. The research brief is generated from the database and pinned to the input file hashes; it warns when the data have changed since the commentary was written. 53 tests run in CI, including a headless render of every dashboard page."
+      "Totals across countries use a balanced panel, so a country's series starting part-way through cannot inflate growth. The research brief is generated from the database and pinned to the input file hashes; it warns when the data have changed since the commentary was written. 53 tests run in CI, including a headless render of every dashboard page.",
+      "The estimator is plain numpy OLS so that 9,999 bootstrap draws reuse one design matrix (about 0.1 s); it is tested against statsmodels to machine precision, checked for correct size under a simulated null, and shown to recover a planted effect. Robustness covers levels instead of shares, war-event distance, a NATO control, dropping the Baltic states, leave-one-out and a placebo year."
     ]
   }
 }
