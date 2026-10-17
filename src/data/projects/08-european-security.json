@@ -1,0 +1,64 @@
+{
+  "order": 0.5,
+  "slug": "european-security",
+  "title": "European Conflict & Security Intelligence",
+  "tagline": "Conflict events and defence budgets in Europe, side by side — with every number traceable to a licensed source and a stated denominator.",
+  "year": "2026",
+  "role": "Solo — data pipeline, geospatial analysis, dashboard and research brief",
+  "stack": [
+    "Python",
+    "DuckDB",
+    "GeoPandas",
+    "Streamlit",
+    "Plotly",
+    "pytest"
+  ],
+  "links": {
+    "demo": null,
+    "code": "https://github.com/marcuccinicolo/european-conflict-security-intelligence"
+  },
+  "card": {
+    "image": "img/ecsi-conflict.jpg",
+    "focus": "top"
+  },
+  "caseStudy": {
+    "hero": {
+      "src": "img/ecsi-conflict.jpg",
+      "alt": "Dashboard page showing recorded conflict events in Europe per month from 2014 to 2025, with headline figures for events, countries, estimated fatalities and the share of precisely located events",
+      "caption": "Conflict patterns from UCDP GED. Every headline figure states its denominator, and counts are labelled as recorded events, not a census of what happened."
+    },
+    "problem": [
+      "Conflict and defence data are easy to chart and easy to misread. Event counts move when reporting changes, fatality figures are estimates with wide ranges, and expenditure series mix current and constant prices. Put conflict and spending on one chart and it invites a causal story the data cannot support."
+    ],
+    "data": [
+      "The **UCDP Georeferenced Event Dataset** (58,016 European events, 1989–2025, CC BY 4.0) and the **SIPRI Military Expenditure Database** (1949–2025). Each file is recorded with its URL, retrieval time and SHA-256. ACLED is supported through its API but never redistributed, as its licence requires."
+    ],
+    "built": [
+      "A validated pipeline into DuckDB, with machine-readable quality reports. SIPRI's estimate flags are read from cell font colours, and a GeoPandas point-in-country check runs against national borders. The analysis refuses invalid operations in code: growth on current prices, summing ratios, mixing sources."
+    ],
+    "images": [
+      {
+        "src": "img/ecsi-fatalities.jpg",
+        "alt": "Line chart of estimated fatalities per year in Europe from 1989 to 2025, with a shaded band between UCDP's low and high estimates that widens sharply after 2022",
+        "caption": "UCDP's best estimate with its low–high range. For 2022 the high estimate is 2.4 times the low, so point figures for an active war are not quoted without the band."
+      },
+      {
+        "src": "img/ecsi-defence.jpg",
+        "alt": "Dashboard page showing military expenditure in constant 2024 US dollars for six European countries from 2000 to 2025, with the unit and price basis stated above the chart",
+        "caption": "Defence trends from SIPRI. The unit and price basis are always displayed, and SIPRI estimates are marked rather than blended in."
+      },
+      {
+        "src": "img/ecsi-threshold.jpg",
+        "alt": "Bar chart of the number of European countries with military expenditure at or above 2 percent of GDP each year, shown against the number of countries with data",
+        "caption": "European countries at or above 2% of GDP, against the number with data each year. SIPRI's definition differs from NATO's, so this is not a compliance measure."
+      }
+    ],
+    "result": [
+      "The checks found what a plain chart hides. The 2025 drop in recorded events (−32%) comes with flat fatality estimates and far fewer date-uncertain records, which points to a coding change rather than de-escalation. Real European military expenditure rose **113%** between 2014 and 2025, and 86% excluding Russia and Ukraine."
+    ],
+    "technical": [
+      "The point-in-country test flagged 1,177 events outside their stated country's present-day border. Almost all turned out to be UCDP's historical state coding — 1990s events in Croatia, Bosnia and Kosovo recorded under \"Serbia (Yugoslavia)\". That is a property of the source, not an error, but it changes what a country filter means.",
+      "Totals across countries use a balanced panel, so a country's series starting part-way through cannot inflate growth. The research brief is generated from the database and pinned to the input file hashes; it warns when the data have changed since the commentary was written. 53 tests run in CI, including a headless render of every dashboard page."
+    ]
+  }
+}
