@@ -44,6 +44,11 @@
         "caption": "UCDP's best estimate with its low–high range. For 2022 the high estimate is 2.4 times the low, so point figures for an active war are not quoted without the band."
       },
       {
+        "src": "img/ecsi-hotspots.jpg",
+        "alt": "Map of Getis-Ord Gi* hot spots of recorded conflict events in 2022 to 2025 on a 25 km equal-area grid, showing a narrow band of significant cells along eastern Ukraine and a smaller cluster near Kherson, with grey cells for non-significant locations with events",
+        "caption": "Gi* hot spots, 2022–2025, on 25 km equal-area cells with false-discovery-rate correction: 82% of precisely located events fall in cells covering under 3% of the study area."
+      },
+      {
         "src": "img/ecsi-event-study.jpg",
         "alt": "Event-study chart of the yearly gradient of military expenditure in percent of GDP per 1,000 km from Russia, near zero before 2014, drifting down after 2014 and falling sharply after 2022, with 95 percent confidence intervals",
         "caption": "Year-by-year gradient relative to 2013. Near zero before 2014, drifting down after the annexation of Crimea, and breaking sharply after the full-scale invasion."
@@ -64,6 +69,7 @@
     ],
     "technical": [
       "The point-in-country test flagged 1,177 events outside their stated country's present-day border. Almost all turned out to be UCDP's historical state coding — 1990s events in Croatia, Bosnia and Kosovo recorded under \"Serbia (Yugoslavia)\". That is a property of the source, not an error, but it changes what a country filter means.",
+      "The hot-spot layer runs Getis-Ord Gi* on an equal-area grid that keeps every zero-event cell inside the study area — dropping them is the classic error that makes every busy cell look ordinary — and corrects thousands of simultaneous tests with a false discovery rate. It matches PySAL to ten decimal places, and the cell-size dependence is reported at 10, 25 and 50 km rather than hidden.",
       "Totals across countries use a balanced panel, so a country's series starting part-way through cannot inflate growth. The research brief is generated from the database and pinned to the input file hashes; it warns when the data have changed since the commentary was written. 53 tests run in CI, including a headless render of every dashboard page.",
       "The estimator is plain numpy OLS so that 9,999 bootstrap draws reuse one design matrix (about 0.1 s); it is tested against statsmodels to machine precision, checked for correct size under a simulated null, and shown to recover a planted effect. Robustness covers levels instead of shares, war-event distance, a NATO control, dropping the Baltic states, leave-one-out and a placebo year."
     ]
